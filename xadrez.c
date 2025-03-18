@@ -7,31 +7,43 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
-int main() {
-   
-    printf ("Peça TORRE\n");
-for (int i = 0; i < 5; i++)//Move a Torre 5 casas para a direita
+int main()
 {
-printf("**Direita**\n"); //Imprime a direçao do movimento.
-}
 
-printf("\nPeça BISPO\n");
-int j = 0;
-do {
-printf("**Cima e Direita**\n");
-j++;
-}while (j < 5);
+  printf("Peça TORRE\n");
+  for (int i = 0; i < 5; i++) // Move a Torre 5 casas para a direita
+  {
+    printf("**Direita**\n"); // Imprime a direçao do movimento.
+  }
 
-printf("\nPeça RAINHA\n");
+  printf("\nPeça BISPO\n");
+  int j = 0;
+  do
+  {
+    printf("**Cima e Direita**\n");
+    j++;
+  } while (j < 5);
 
-int k = 1;
+  printf("\nPeça RAINHA\n");
 
-while (k <= 8)
-{
-  printf("**Esquerda**\n", k);
-   k++;
-}
+  int k = 1;
 
+  while (k <= 8)
+  {
+    printf("**Esquerda**\n", k);
+    k++;
+  }
+
+  printf("\nPeça CAVALO\n");
+  int cavalo = 1;
+  while (cavalo--)
+  {
+    for (int cavalo1 = 0; cavalo1 < 2; cavalo1++)
+    {
+      printf("**Cima**\n");
+    }
+    printf("**Direita**\n");
+  }
 }
 
 // Nível Novato - Movimentação das Peças
