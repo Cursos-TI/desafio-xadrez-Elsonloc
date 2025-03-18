@@ -7,46 +7,67 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
-#include <stdio.h>
 
-int main()
-{
-
-  printf("Peça TORRE\n");
-  for (int i = 0; i < 5; i++) // Move a Torre 5 casas para a direita
-  {
-    printf("**Direita**\n"); // Imprime a direçao do movimento.
-  }
-
-  printf("\nPeça BISPO\n");
-  int j = 0;
-  do
-  {
-    printf("**Cima e Direita**\n");
-    j++;
-  } while (j < 5);
-
-  printf("\nPeça RAINHA\n");
-
-  int k = 1;
-
-  while (k <= 8)
-  {
-    printf("**Esquerda**\n", k);
-    k++;
-  }
-
-  printf("\nPeça CAVALO\n");
-  int cavalo = 1;
-  while (cavalo--)
-  {
-    for (int cavalo1 = 0; cavalo1 < 2; cavalo1++)
-    {
-      printf("**Cima**\n");
+// Função recursiva para o movimento da Torre
+void moverTorre(int i, int limite) {
+    if (i < limite) {
+        printf("**Direita**\n");
+        moverTorre(i + 1, limite); // Chamada recursiva
     }
-    printf("**Direita**\n");
-  }
 }
+
+// Função recursiva para o movimento do Bispo com loops aninhados
+void moverBispo(int linha, int coluna, int limiteVertical, int limiteHorizontal) {
+    if (linha < limiteVertical && coluna < limiteHorizontal) {
+        printf("**Baixo e Esquerda**\n", linha, coluna);
+        
+        // Loop aninhado para movimentar o Bispo
+        for (int i = 0; i < 1; i++) {
+            moverBispo(linha + 1, coluna + 1, limiteVertical, limiteHorizontal); // Recursão
+        }
+    }
+}
+
+// Função recursiva para o movimento da Rainha
+void moverRainha(int k, int limite) {
+    if (k <= limite) {
+        printf("**Direita**\n");
+        moverRainha(k + 1, limite); // Chamada recursiva
+    }
+}
+
+// Função para o movimento do Cavalo (com loops aninhados)
+void moverCavalo() {
+    for (int i = 0; i < 1; i++) { // Movimentos do Cavalo (apenas um movimento aqui)
+        for (int j = 0; j < 2; j++) {
+            printf("**Cima**\n");
+        }
+        printf("**Esquerda**\n");
+    }
+}
+
+int main() {
+    // Movimentos da Torre
+    printf("Peça TORRE\n");
+    moverTorre(0, 5); // Chama a função recursiva para a Torre, com limite de 5 casas
+
+    // Movimentos do Bispo
+    printf("\nPeça BISPO\n");
+    moverBispo(0, 0, 5, 5); // Chama a função recursiva para o Bispo, com limite de 5 movimentos
+
+    // Movimentos da Rainha
+    printf("\nPeça RAINHA\n");
+    moverRainha(1, 8); // Chama a função recursiva para a Rainha, com limite de 8 movimentos
+
+    // Movimentos do Cavalo
+    printf("\nPeça CAVALO\n");
+    moverCavalo(); // Chama a função para o movimento do Cavalo
+
+    return 0;
+}
+
+
+
 
 // Nível Novato - Movimentação das Peças
 // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
